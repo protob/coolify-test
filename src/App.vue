@@ -1,13 +1,26 @@
 <template>
-  <Dialog />
-  <Loading />
-  <router-view />
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
-<script setup lang="ts">
-import Loading from '@/components/organisms/Loading.vue'
-import Dialog from '@/components/organisms/Dialog.vue'
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
 </script>
 
-<style lang="scss">
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>
