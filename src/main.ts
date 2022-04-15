@@ -1,10 +1,23 @@
-export const delayMillis = (delayMs: number): Promise<void> => new Promise(resolve => setTimeout(resolve, delayMs));
+import { createApp } from 'vue'
+import { router } from '@/routes'
+import { createPinia } from 'pinia'
+import { createVueKakaoSdk } from 'vue3-kakao-sdk'
+import { createRippleDirective } from 'vue-create-ripple'
 
-export const greet = (name: string): string => `Hello ${name}`
+import App from './App.vue'
 
-export const foo = async (): Promise<boolean> => {
-  console.log(greet('World'))
-  await delayMillis(1000)
-  console.log('done')
-  return true
-}
+import '@/plugins/firebase'
+
+import '@/assets/styles/tailwind.scss'
+import '@/assets/styles/main.scss'
+
+const app = createApp(App)
+  .directive('ripple',
+    createRippleDirective({
+      class: 'bg-black opacity-30'
+    })
+  )
+  .use(createPinia())
+  .use(createVueKakaoSdk('318af20a7053527c45e06cc36e01aac2'))
+  .use(router)
+  .mount('#app')
